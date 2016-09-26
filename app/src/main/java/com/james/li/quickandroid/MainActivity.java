@@ -1,9 +1,16 @@
 package com.james.li.quickandroid;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.james.li.quickandroid.Base.AppActivity;
+import com.james.li.quickandroid.Base.BaseFragment;
+
+public class MainActivity extends AppActivity {
+
+    @Override
+    protected BaseFragment getFirstFragment() {
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
