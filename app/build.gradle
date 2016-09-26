@@ -15,10 +15,26 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    productFlavors {
+        // 从这里添加不同环境的包名
+        beta {
+            applicationId "com.james.li.quickandroid.beta"
+        }
+
+        production {
+            applicationId "com.james.li.quickandroid"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix '.debug'
         }
     }
 }
