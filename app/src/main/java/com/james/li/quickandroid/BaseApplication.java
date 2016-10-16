@@ -6,6 +6,8 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
+import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
+
 /**
  * 主要实现完全退出app的内容
  * Created by lsy-android on 10/16/16 in zsl-tech.
@@ -22,6 +24,9 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        //Install CustomActivityOnCrash
+        CustomActivityOnCrash.install(this);
     }
 
     @Override
