@@ -79,7 +79,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
 
-    // lombok JavaBean注解
+    // lombok JavaBean注解 需要配合Lombok插件进行使用
     compile 'org.projectlombok:lombok:1.16.10'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 
