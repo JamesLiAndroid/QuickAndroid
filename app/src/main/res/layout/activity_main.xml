@@ -14,15 +14,38 @@
     <!--</android.support.v4.view.ViewPager>-->
 
     <Button
-        android:text="Button"
+        android:text="触发错误页面"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/button"
-        android:layout_below="@+id/viewPager2"
+        android:id="@+id/btn_error"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="进入导航主页面"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/btn_nav"
+        android:layout_below="@+id/btn_error"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <Button
+        android:text="进入侧滑菜单页面"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/btn_drawer"
+        android:layout_below="@+id/btn_nav"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
 
 
 </RelativeLayout>

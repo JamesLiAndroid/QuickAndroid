@@ -1,9 +1,11 @@
 package com.james.li.quickandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,19 +24,39 @@ public class MainActivity extends AppActivity {
     ViewPager viewPager;
     private List<BaseFragment> fragmentList;
     Button btnError;
+    Button btnNav;
+    Button btnDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        // 去除头部默认的Toolbar
+       // supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
         //viewPager = (ViewPager) findViewById(R.id.viewPager2);
-        btnError = (Button) findViewById(R.id.button);
+        btnError = (Button) findViewById(R.id.btn_error);
         btnError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 认为制造Error
                 throw new RuntimeException("Boom!");
+            }
+        });
+        btnNav = (Button) findViewById(R.id.btn_nav);
+        btnNav.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent  intent = new Intent(MainActivity.this, NavigationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDrawer = (Button) findViewById(R.id.btn_drawer);
+        btnDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent  intent = new Intent(MainActivity.this, DrawerActivity.class);
+                startActivity(intent);
             }
         });
 //
