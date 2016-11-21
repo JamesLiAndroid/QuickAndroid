@@ -26,6 +26,7 @@ public class MainActivity extends AppActivity {
     Button btnError;
     Button btnNav;
     Button btnDrawer;
+    Button btnFloating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,14 @@ public class MainActivity extends AppActivity {
         btnDrawer.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 Intent  intent = new Intent(MainActivity.this, DrawerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnFloating = (Button) findViewById(R.id.btn_floating_action);
+        btnFloating.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent  intent = new Intent(MainActivity.this, FloatingButtonActivity.class);
                 startActivity(intent);
             }
         });

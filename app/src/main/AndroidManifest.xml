@@ -18,9 +18,12 @@
 		</activity>
 		<activity android:name=".NavigationActivity">
 		</activity>
-		<activity android:name=".DrawerActivity"
-			android:theme="@style/NoActionBarTheme"
-			>
+		<activity
+			android:name=".DrawerActivity"
+			android:theme="@style/NoActionBarTheme">
+		</activity>
+		<activity android:name=".FloatingButtonActivity"
+			android:theme="@style/NoActionBarTheme">
 		</activity>
 	</application>
 
