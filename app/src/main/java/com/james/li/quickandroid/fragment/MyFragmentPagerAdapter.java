@@ -1,4 +1,4 @@
-package com.james.li.quickandroid.example;
+package com.james.li.quickandroid.fragment;
 
 
 import android.support.v4.app.Fragment;

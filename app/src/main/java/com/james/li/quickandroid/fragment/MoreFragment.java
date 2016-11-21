@@ -1,4 +1,4 @@
-package com.james.li.quickandroid.example;
+package com.james.li.quickandroid.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;

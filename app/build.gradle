@@ -5,106 +5,107 @@ apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "24.0.3"
+  compileSdkVersion 25
+  buildToolsVersion "24.0.3"
 
-    defaultConfig {
-        applicationId "com.james.li.quickandroid"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-        //  dex冲突的限制
-        multiDexEnabled true
+  defaultConfig {
+    applicationId "com.james.li.quickandroid"
+    minSdkVersion 15
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+    //  dex冲突的限制
+    multiDexEnabled true
+  }
 
+  //解决很多第三方不是很好的支持Android Studio规范，只需要在release时忽略这些警告。还有就是Android Studio的混淆规则也要严格很多，所以要完善混淆文件
+  lintOptions {
+    //lint 遇到 error 时继续 构建
+    abortOnError false //build release 版本 时 开启lint 检测
+    checkReleaseBuilds false // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+    disable 'MissingTranslation'
+  }
+
+  dexOptions {
+    //incremental true
+    javaMaxHeapSize "4g"
+  }
+
+  productFlavors {
+    // 从这里添加不同环境的包名
+    beta {
+      applicationId "com.james.li.quickandroid.beta"
     }
 
-    //解决很多第三方不是很好的支持Android Studio规范，只需要在release时忽略这些警告。还有就是Android Studio的混淆规则也要严格很多，所以要完善混淆文件
-    lintOptions { //lint 遇到 error 时继续 构建
-        abortOnError false //build release 版本 时 开启lint 检测
-        checkReleaseBuilds false // 防止在发布的时候出现因MissingTranslation导致Build Failed!
-        disable 'MissingTranslation'
+    production {
+      applicationId "com.james.li.quickandroid"
+    }
+  }
+
+
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
 
-    dexOptions {
-        //incremental true
-        javaMaxHeapSize "4g"
+    debug {
+      applicationIdSuffix '.debug'
     }
-
-    productFlavors {
-        // 从这里添加不同环境的包名
-        beta {
-            applicationId "com.james.li.quickandroid.beta"
-        }
-
-        production {
-            applicationId "com.james.li.quickandroid"
-        }
-    }
-
-
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            applicationIdSuffix '.debug'
-        }
-    }
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  testCompile 'junit:junit:4.12'
+  // MD设计组件
+  compile 'com.android.support:appcompat-v7:25.0.1'
+  compile 'com.android.support:design:25.0.1'
+  compile 'com.android.support:support-v4:25.0.1'
+  compile 'com.android.support:recyclerview-v7:25.0.1'
+  compile 'com.android.support:cardview-v7:25.0.1'
 
-    // MD设计组件
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support:support-v4:25.0.1'
-    compile 'com.android.support:recyclerview-v7:25.0.1'
-    compile 'com.android.support:cardview-v7:25.0.1'
+  // 网络请求框架： Retrofit + OkHttp + OkIO
+  compile 'com.squareup.retrofit2:retrofit:2.1.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+  compile 'com.squareup.okhttp3:okhttp:3.4.1'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+  compile 'com.squareup.okio:okio:1.10.0'
+  // Json解析：Gson / fastJson
+  // compile 'com.alibaba:fastjson:1.2.16'
+  compile 'com.google.code.gson:gson:2.7'
 
-    // 网络请求框架： Retrofit + OkHttp + OkIO
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    compile 'com.squareup.okio:okio:1.10.0'
+  // 图片加载框架：Glide
+  compile 'com.github.bumptech.glide:glide:3.7.0'
 
-    // Json解析：Gson / fastJson
-    compile 'com.google.code.gson:gson:2.7'
-    // compile 'com.alibaba:fastjson:1.2.16'
+  // 数据库框架：OrmLite / GreenDao
+  compile 'org.greenrobot:greendao:3.1.1'
 
-    // 图片加载框架：Glide
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+  // 依赖注入框架：ButterKnife
+  compile 'com.jakewharton:butterknife:8.0.1'
+  apt 'com.jakewharton:butterknife-compiler:8.0.1'
 
-    // 数据库框架：OrmLite / GreenDao
-    compile 'org.greenrobot:greendao:3.1.1'
+  // 事件总线：EventBus
+  compile 'org.greenrobot:eventbus:3.0.0'
 
-    // 依赖注入框架：ButterKnife
-    compile 'com.jakewharton:butterknife:8.0.1'
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+  // RxJava的使用
+  compile 'io.reactivex:rxandroid:1.2.1'
+  compile 'io.reactivex:rxjava:1.1.6'
+  // lombok JavaBean注解 需要配合Lombok插件进行使用
+  compile 'org.projectlombok:lombok:1.16.10'
+  provided 'org.glassfish:javax.annotation:10.0-b28'
 
-    // 事件总线：EventBus
-    compile 'org.greenrobot:eventbus:3.0.0'
-
-    // RxJava的使用
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
-
-    // lombok JavaBean注解 需要配合Lombok插件进行使用
-    compile 'org.projectlombok:lombok:1.16.10'
-    provided 'org.glassfish:javax.annotation:10.0-b28'
-
-    // 内存泄露监测：LeakCanary
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1' // or 1.4-beta2
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1' // or 1.4-beta2
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1' // or 1.4-beta2
-
-    // 添加发生闪退时加载固定的页面
-    compile 'cat.ereza:customactivityoncrash:1.5.0'
+  // 内存泄露监测：LeakCanary
+  // or 1.4-beta2
+  // or 1.4-beta2
+  // or 1.4-beta2
+  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+  // 添加发生闪退时加载固定的页面
+  compile 'cat.ereza:customactivityoncrash:1.5.0'
+  // Fragment切换控制类
+  compile 'com.ncapdevi:frag-nav:1.2.0'
 }

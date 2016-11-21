@@ -22,8 +22,11 @@
 			android:name=".DrawerActivity"
 			android:theme="@style/NoActionBarTheme">
 		</activity>
-		<activity android:name=".FloatingButtonActivity"
+		<activity
+			android:name=".FloatingButtonActivity"
 			android:theme="@style/NoActionBarTheme">
+		</activity>
+		<activity android:name=".BottomNavChangeActivity">
 		</activity>
 	</application>
 
