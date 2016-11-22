@@ -11,17 +11,18 @@ import com.james.li.quickandroid.R;
 /**
  * Created by lsy-android on 10/16/16 in zsl-tech.
  */
-public class HomeFragment extends LazyFragment {
+public class CustomFragment extends LazyFragment {
     private TextView tvLoading;
     private ImageView ivContent;
     private int tabIndex;
     public static final String INTENT_INT_INDEX="index";
 
-    public static HomeFragment newInstance(int tabIndex,boolean isLazyLoad) {
+    public static CustomFragment newInstance(int tabIndex,boolean isLazyLoad) {
+
         Bundle args = new Bundle();
         args.putInt(INTENT_INT_INDEX, tabIndex);
         args.putBoolean(LazyFragment.INTENT_BOOLEAN_LAZYLOAD, isLazyLoad);
-        HomeFragment fragment = new HomeFragment();
+        CustomFragment fragment = new CustomFragment();
         fragment.setArguments(args);
         return fragment;
     }

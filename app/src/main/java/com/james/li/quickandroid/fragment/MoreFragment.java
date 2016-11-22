@@ -12,7 +12,6 @@ import com.james.li.quickandroid.R;
 /**
  * Created by lsy-android on 10/16/16 in zsl-tech.
  */
-
 public class MoreFragment extends LazyFragment {
     private TextView tvLoading;
     private ImageView ivContent;

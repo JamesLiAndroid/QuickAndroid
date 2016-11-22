@@ -26,7 +26,8 @@
 			android:name=".FloatingButtonActivity"
 			android:theme="@style/NoActionBarTheme">
 		</activity>
-		<activity android:name=".BottomNavChangeActivity">
+		<activity android:name=".BottomNavChangeActivity"
+			android:theme="@style/NoActionBarTheme">
 		</activity>
 	</application>
 

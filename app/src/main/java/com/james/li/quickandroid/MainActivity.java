@@ -27,6 +27,7 @@ public class MainActivity extends AppActivity {
     Button btnNav;
     Button btnDrawer;
     Button btnFloating;
+    Button btnNavChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,20 +69,14 @@ public class MainActivity extends AppActivity {
                 startActivity(intent);
             }
         });
-//
-//        fragmentList = new ArrayList<>();
-//        fragmentList.add(MoreFragment.newInstance(1,false));
-//        fragmentList.add(MoreFragment.newInstance(2,false));
-//        fragmentList.add(MoreFragment.newInstance(3,false));
-//        fragmentList.add(MoreFragment.newInstance(4,false));
-//
-//        FragmentManager supportFragmentManager = getSupportFragmentManager();
-//        MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(supportFragmentManager, fragmentList);
-//        viewPager.setAdapter(myFragmentPagerAdapter);
-//
-//        viewPager.setOffscreenPageLimit(4);
-        // 防止getFirstFragment回调时出现空指针的现象
 
+        btnNavChange = (Button) findViewById(R.id.btn_nav_change);
+        btnNavChange.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent  intent = new Intent(MainActivity.this, BottomNavChangeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 添加Fragment到回退栈
         ((BaseApplication)getApplication()).addActivity(this);

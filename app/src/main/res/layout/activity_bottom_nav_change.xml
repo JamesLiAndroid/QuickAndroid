@@ -21,12 +21,14 @@
 
 		<!-- ActionBar部分 -->
 		<android.support.design.widget.AppBarLayout
+			android:id="@+id/app_bar"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
 			>
 
 			<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
 				android:layout_width="match_parent"
 				android:layout_height="?attr/actionBarSize"
 				android:background="@color/colorPrimaryDark"
@@ -39,35 +41,14 @@
 			android:id="@+id/content"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:layout_marginTop="?attr/actionBarSize"
 			>
 
-			<ImageView
-				android:id="@+id/img_index"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:scaleType="centerCrop"
-				android:src="@android:drawable/ic_dialog_map"
-				android:layout_centerInParent="true"
+			<include layout="@layout/viewpager_include"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_above="@+id/bottom_navigation"
 				/>
-			<ImageView
-				android:id="@+id/img_next"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:scaleType="centerCrop"
-				android:src="@android:drawable/ic_dialog_dialer"
-				android:visibility="gone"
-				android:layout_centerInParent="true"
-				/>
-			<ImageView
-				android:id="@+id/img_third"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:scaleType="centerCrop"
-				android:src="@android:drawable/ic_dialog_email"
-				android:layout_centerInParent="true"
-				android:visibility="gone"
-				/>
-
 
 			<android.support.design.widget.BottomNavigationView
 				android:id="@+id/bottom_navigation"
@@ -94,6 +75,7 @@
 				android:layout_alignParentEnd="true"
 				/>
 		</RelativeLayout>
+
 
 	</android.support.design.widget.CoordinatorLayout>
 

@@ -52,7 +52,19 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:id="@+id/btn_floating_action"
-        android:layout_below="@+id/btn_nav"
+        android:layout_below="@+id/btn_drawer"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <Button
+        android:text="进入NavChange菜单页面"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/btn_nav_change"
+        android:layout_below="@+id/btn_floating_action"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"

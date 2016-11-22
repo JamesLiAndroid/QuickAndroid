@@ -7,12 +7,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.james.li.quickandroid.Base.BaseFragment;
 
+import com.james.li.quickandroid.Base.LazyFragment;
 import java.util.List;
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-    private List<BaseFragment> fragmentList;
+    private List<LazyFragment> fragmentList;
 
-    public MyFragmentPagerAdapter(FragmentManager fm, List<BaseFragment> fragmentList) {
+    public MyFragmentPagerAdapter(FragmentManager fm, List<LazyFragment> fragmentList) {
         super(fm);
         this.fragmentList = fragmentList;
     }
@@ -25,6 +26,11 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return fragmentList.size();
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return super.getItemPosition(object);
     }
 
 }
