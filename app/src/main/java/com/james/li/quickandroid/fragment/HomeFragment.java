@@ -2,11 +2,13 @@ package com.james.li.quickandroid.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.james.li.quickandroid.Base.LazyFragment;
 import com.james.li.quickandroid.R;
+import java.util.Random;
 
 /**
  * Created by lsy-android on 10/16/16 in zsl-tech.
@@ -16,6 +18,8 @@ public class HomeFragment extends LazyFragment {
     private ImageView ivContent;
     private int tabIndex;
     public static final String INTENT_INT_INDEX="index";
+
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public static HomeFragment newInstance(int tabIndex,boolean isLazyLoad) {
         Bundle args = new Bundle();
@@ -32,7 +36,47 @@ public class HomeFragment extends LazyFragment {
         tabIndex = getArguments().getInt(INTENT_INT_INDEX);
         ivContent = (ImageView) findViewById(R.id.iv_content);
         tvLoading = (TextView) findViewById(R.id.tv_loading);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setEnabled(true);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override public void onRefresh() {
+                refreshItems();
+            }
+        });
         getData();
+    }
+
+    private void refreshItems() {
+        int i = createRandom(1, 4);
+        int id = 0;
+        switch (i) {
+            case 1:
+                id=R.drawable.a;
+                break;
+            case 2:
+                id=R.drawable.b;
+                break;
+            case 3:
+                id=R.drawable.c;
+                break;
+            case 4:
+                id=R.drawable.d;
+                break;
+        }
+
+        ivContent.setImageResource(id);
+        stopRefresh();
+    }
+
+    private void stopRefresh() {
+        // Stop refresh animation
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    private int createRandom(int min, int max) {
+        Random random = new Random();
+        int s = random.nextInt(max)  %  (max - min + 1) + min;
+        return s;
     }
 
     private void getData() {
